@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "async": "^2.6.2",
+    "cheerio": "^1.0.0-rc.2",
+    "fs": "^0.0.1-security",
+    "iconv-lite": "^0.4.24",
+    "knex": "^0.16.3",
+    "mysql": "^2.16.0",
+    "request": "^2.88.0",
+    "sqlite3": "^4.0.6"
+  }
+}

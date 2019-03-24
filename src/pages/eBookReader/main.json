@@ -1,0 +1,13 @@
+{
+ "usingComponents": {
+    "i-button": "/static/iveiw/button/index",
+    "i-icon": "/static/iveiw/icon/index",
+    "i-row": "/static/iveiw/row/index",
+    "i-col": "/static/iveiw/col/index",
+    "i-drawer": "/static/iveiw/drawer/index",
+    "i-tabs": "/static/iveiw/tabs/index",
+    "i-tab": "/static/iveiw/tab/index",
+    "i-cell-group": "/static/iveiw/cell-group/index",
+    "i-cell": "/static/iveiw/cell/index"
+  }
+}

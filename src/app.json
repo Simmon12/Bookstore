@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/record/main",
+    "pages/person/main",
+    "pages/eBookReader/main",
+    "pages/bookshelf/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "看书吧",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "backgroundColor": "#fafafa",
+    "selectedColor": "#333",
+    "borderStyle": "white",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/main",
+        "iconPath": "static/tabs/home.png",
+        "selectedIconPath": "static/tabs/home-active.png"
+      },
+      {
+        "text": "阅读记录",
+        "pagePath": "pages/record/main",
+        "iconPath": "static/tabs/bookshelf.png",
+        "selectedIconPath": "static/tabs/bookshelf-active.png"
+      },
+      {
+        "text": "个人中心",
+        "pagePath": "pages/person/main",
+        "iconPath": "static/tabs/person.png",
+        "selectedIconPath": "static/tabs/person-active.png"
+      }
+    ],
+    "position": "bottom"
+  }
+}
