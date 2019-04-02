@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "i-icon": "/static/iveiw/icon/index"
+  },
+  "navigationBarTitleText": "搜索"
+}

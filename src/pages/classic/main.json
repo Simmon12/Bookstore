@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "i-cell-group": "/static/iveiw/cell-group/index",
+    "i-cell": "/static/iveiw/cell/index",
+    "i-icon": "/static/iveiw/icon/index",
+    "i-grid": "/static/iveiw/grid/index",
+    "i-grid-item": "/static/iveiw/grid-item/index",
+    "i-grid-icon": "/static/iveiw/grid-icon/index",
+    "i-grid-label": "/static/iveiw/grid-label/index",
+    "i-panel": "/static/iveiw/panel/index"
+  }
+}

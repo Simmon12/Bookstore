@@ -9,8 +9,11 @@
         </i-col>
       </i-row>
     </div>
+<!--     <div class="book-shelf-baner">
+      <img class="banner-image" src="/static/images/bookshelf_banner.jpg" background-size="cover">
+    </div> -->
     <scroll-view class="book-shelf-scroll-wrapper">
-      <shelf :bookshelfItems="bookshelfItems" :ifEdit="ifEdit" @test="test"></shelf>
+      <shelf :ifEdit="ifEdit" @test="test"></shelf>
     </scroll-view>
 
 
@@ -29,7 +32,8 @@ export default {
     }
   },
 
-  created() {
+  onShow() {
+    console.log('书架')
     let self = this;
     self.bookshelfItems = wx.getStorageSync('bookshelfItems')
   },
@@ -69,6 +73,21 @@ export default {
 }
 .col-item {
   text-align: center;
+}
+.book-shelf-baner {
+  width: 100%;
+  height: 342rpx;
+  margin: 0 15px;
+  margin-top: 55px; 
+  margin-bottom: 28px;
+}
+.banner-image {
+  width: 91%;
+  height: 100%;
+  border-radius: 15px;
+}
+.book-shelf-scroll-wrapper {
+  margin-top: 34px;
 }
 
 </style>

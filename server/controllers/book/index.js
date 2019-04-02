@@ -1,11 +1,22 @@
 const db = require('../../model/db.js');
+const Redis = require('../../redis/redis.js')
 
 
-exports.getBookDetail = async (ctx, next) => {
+exports.getBookDetail =  async(ctx, next) => {
   if (ctx.state.$wxInfo.loginState === 1) {
-    console.log(ctx.state.$wxInfo);
     const bookId = ctx.params.bookId;
-    ctx.state.data = await db.getBookDetail(bookId);
+    let book;
+    let redisKey = `book${bookId}`;
+    let has = await Redis.exists(redisKey);
+    if(has) {
+      console.log('getBookDetail有缓存')
+      book = await Redis.get(redisKey);
+    } else {
+      console.log('getBookDetail无缓存')
+      book = await db.getBookDetail(bookId);
+      let res = await Redis.set(redisKey, JSON.stringify(book), 7200)
+    }
+    ctx.state.data = book;
   } else {
     ctx.state.code = -1;
   }
@@ -15,12 +26,34 @@ exports.getBookDetail = async (ctx, next) => {
 exports.getContentById = async (ctx, next) => {
   if (ctx.state.$wxInfo.loginState === 1) {
     const sectionId = ctx.params.sectionId;
-    ctx.state.data = await db.getContentById(sectionId);
+    let section;
+    let redisKey = `section${sectionId}`;
+    let has = await Redis.exists(redisKey);
+    if(has) {
+      console.log('getContentById有缓存')
+      section = await Redis.get(redisKey);
+    } else {
+      console.log('getContentById无缓存')
+      section = await db.getContentById(sectionId);
+      let res = await Redis.set(redisKey, JSON.stringify(section), 7200)
+    }
+    ctx.state.data = section;
+
   } else {
     ctx.state.code = -1;
   }
-
 }
+
+exports.getBooksByBookName = async (ctx, next) => {
+  if (ctx.state.$wxInfo.loginState === 1) {
+    const bookName = ctx.params.bookName;
+    ctx.state.data = await db.getBooksByBookName(bookName);
+  } else {
+    ctx.state.code = -1;
+  }
+}
+
+
 
 // exports.getAllSections = async(ctx, next) => {
 //   const bookId = ctx.params.bookId;

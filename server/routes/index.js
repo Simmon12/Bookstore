@@ -21,6 +21,10 @@ router.get('/login', authorizationMiddleware, controllers.login)
 router.get('/getBookDetail/:bookId', validationMiddleware, controllers.getBookDetail)
 router.get('/getContentById/:sectionId', validationMiddleware, controllers.getContentById)
 // router.get('/getAllSections/:bookId', controllers.getAllSections)
+router.get('/getBooksByBookName/:bookName',validationMiddleware, controllers.getBooksByBookName)
+router.get('/getCommentsByBookId/:bookId', validationMiddleware, controllers.getCommentsByBookId)
+router.post('/subComment', validationMiddleware, controllers.subComment)
+
 
 
 module.exports = router

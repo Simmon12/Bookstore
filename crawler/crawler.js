@@ -14,7 +14,8 @@ exports.bookcrawler = function(URL, callback) {
     method: 'GET',
     encoding: null,
     url: URL,
-    timeout: 100000
+    timeout: 100000,
+    rejectUnauthorized: false
   };
 
 
@@ -38,13 +39,13 @@ exports.bookcrawler = function(URL, callback) {
       'bookName': bookName,
       'bookDes': $('#intro>p').text(),
       'bookImage': $('#fmimg>img').attr('src'),
-      'bookType': '历史',
+      'bookType': '青春言情',
       'author': author
 
     };
 
     bookListUrls.each(function(index, ele){
-      let url = URL.substring(0, 23) + $(this).attr('href');
+      let url = URL.substring(0, 24) + $(this).attr('href');
       let data = {
         'index': index,
         'url': url,
@@ -78,7 +79,8 @@ function getBookContent(item, callback) {
       method: 'GET',
       encoding: null,
       url: item.url,
-      timeout: 100000
+      timeout: 100000,
+      rejectUnauthorized: false
     };
 
     request(options,function(err,res,body){

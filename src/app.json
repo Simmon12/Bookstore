@@ -1,10 +1,12 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/record/main",
+    "pages/bookshelf/main",
     "pages/person/main",
+    "pages/search/main",
     "pages/eBookReader/main",
-    "pages/bookshelf/main"
+    "pages/bookDetail/main",
+    "pages/AllComment/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,8 +27,8 @@
         "selectedIconPath": "static/tabs/home-active.png"
       },
       {
-        "text": "阅读记录",
-        "pagePath": "pages/record/main",
+        "text": "我的书架",
+        "pagePath": "pages/bookshelf/main",
         "iconPath": "static/tabs/bookshelf.png",
         "selectedIconPath": "static/tabs/bookshelf-active.png"
       },

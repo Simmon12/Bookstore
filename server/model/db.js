@@ -30,7 +30,33 @@ function getContentById(sectionId) {
 }
 
 
+function getBooksByBookName(bookName) {
+  return mysql('booklist').where('bookName', 'like', `%${bookName}%`)
+          .select()
+          .then((books) => {
+            return {books: books}
+          })
+}
+
+function getCommentsByBookId(bookId) {
+  return mysql('comment').where('bookId',bookId)
+        .select()
+        .then((comments) => {
+          return {'comments': comments}
+        })
+}
+
+function insertComment(comment) {
+  return mysql('comment').insert(comment).returning('commentId')
+        .then((commentId) => {
+          return {commentId: commentId}
+        })
+}
+
 module.exports = {
   getBookDetail,
-  getContentById
+  getContentById,
+  getBooksByBookName,
+  getCommentsByBookId,
+  insertComment
 }

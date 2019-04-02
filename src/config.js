@@ -12,6 +12,21 @@ const config = {
   },
   getAllSections: function(bookId) {
     return `${host}/getAllSections/${bookId}`
+  },
+  getBooksByBookName: function(bookName) {
+    return `${host}/getBooksByBookName/${bookName}`
+  },
+  getBooksByLike: function() {
+    return `${host}/getBooksByLike`
+  },
+  getBooksByFree: function () {
+    return `${host}/getBooksByFree`
+  },
+  getCommentsByBookId: function(bookId) {
+    return `${host}/getCommentsByBookId/${bookId}`
+  },
+  subComment: function() {
+    return `${host}/subComment`
   }
 }
 

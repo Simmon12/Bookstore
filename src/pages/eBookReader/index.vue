@@ -94,7 +94,7 @@
         showFontSet: false,
         initFontSize: 14,
         dayOrnight: 'day',
-        added: true
+        added: false
       }
     },
     mounted() {
@@ -114,20 +114,30 @@
       })
 
       const bookId = that.$root.$mp.query.bookId;
-      const sectionId = that.$root.$mp.query.sectionId;
+      let latestReadSectionId = wx.getStorageSync(`latestRead${bookId}`);
+      let sectionId;
+      if (latestReadSectionId) {
+      console.log('sectionIdssd11')
+      console.log(latestReadSectionId)
+        sectionId = latestReadSectionId
+      } else {
+        console.log('sectionIdssd')
+
+        sectionId = that.$root.$mp.query.sectionId;
+      }
+      console.log(sectionId)
+      
 
       let bookLists = wx.getStorageSync('bookshelf');
       let pos = -1;
       if(bookLists) {
         pos = bookLists.findIndex((value) => {
-          value = bookId
+          return value == bookId
         })
       }
       
       if (pos == -1) { this.added = false }
       else           this.added = true;
-
-
 
       that.initBook(bookId);
       that.initContent(sectionId);
@@ -197,8 +207,7 @@
         }
 
         let latestRead = `latestRead${this.bookId}`;
-        console.log('lizhi')
-        console.log(latestRead);
+
         wx.setStorage({
           key: latestRead,
           data:sectionId
@@ -209,18 +218,18 @@
 
         let self = this;
         let bookRes = await get(config.getBookDetail(bookId));
+
         self.book = bookRes.book[0];
         self.bookId = bookId;
-
+        wx.setNavigationBarTitle({
+          title: self.book.bookName
+        })
         let sectionTitles = this.book.sectionTitles.split("#");
         let sectionIds = this.book.sectionArray.split(",");
         self.sectionLists = sectionIds.map(function (item, index) {
           return {'sectionId': item, 'sectionTitle': sectionTitles[index]};
         })
-
-        wx.setNavigationBarTitle({
-          title: self.book.bookName
-        })
+        
       },
 
       toggleMunu() {
@@ -277,7 +286,7 @@
         let bookshelfItems = wx.getStorageSync('bookshelfItems')
         let sectionIds = this.book.sectionArray.split(",");
         let Item = {'bookId': this.bookId, 'bookName': this.book.bookName, 'bookImage': this.book.bookImage,'sectionId': sectionIds[0] };
-        
+        this.added = true;
 
         if (bookLists) {
           let pos = bookLists.findIndex((value)=> {return value == this.bookId})

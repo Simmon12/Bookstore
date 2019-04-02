@@ -29,20 +29,30 @@
 <script type="ecmascript-6">
 import shelfImage from '@/components/bookshelf/shelfImage'
 export default {
-  props: ['bookshelfItems', 'ifEdit'],
+  props: ['ifEdit'],
   data() {
     return {
+      bookshelfItems: [],
       bookData: [],
       delelteItems: [],
       ifDelte: false
     }
   },
+  show() {
+    console.log('书加组件')
+  },
   created() {
-    this.bookData = this.bookshelfItems.map((item, index) => {
+
+    this.bookshelfItems = wx.getStorageSync('bookshelfItems')
+
+    if (this.bookshelfItems) {
+      this.bookData = this.bookshelfItems.map((item, index) => {
         item.type = 1;
         this.$set(item, 'isSelected', false)
         return item;
-    });
+      });
+    }
+    
     this.bookData.push({'type': 3})
   },
   methods: {
@@ -58,13 +68,14 @@ export default {
           url: `/pages/eBookReader/main?bookId=${bookId}&sectionId=${sectionId}`
         })
       } else if (item.type == 2) {
-        console.log('编辑状态')
         item.isSelected = !item.isSelected;     
-      } 
+      } else if (item.type == 3) {
+        wx.switchTab({
+          url: '/pages/index/main'
+        })
+      }
     },
     deleteBook() {
-      console.log('slddd')
-      console.log(this.delelteItems);
       let bookLists = wx.getStorageSync('bookshelf');
       let IdPos = -1;
       let ObjPos = -1;
@@ -115,19 +126,20 @@ export default {
       if(this.ifEdit) {
         return this.bookData;
       }
-      console.log(this.bookData)
       return this.bookData
     },
     ifSelected(item) {
       return item.isSelected == true ? 'selected' : false;
     },
     canedit() {
-      let delelteItems = this.bookshelfItems.filter((item) => {
-        return item.isSelected == true
-      })
-      this.delelteItems = delelteItems;
-      if (delelteItems.length) {
-        return 'delelte-none';
+      if (this.bookshelfItems) {
+        let delelteItems = this.bookshelfItems.filter((item) => {
+          return item.isSelected == true
+        })
+        this.delelteItems = delelteItems;
+        if (delelteItems.length) {
+          return 'delelte-none';
+        }
       }
       return '';
     }
@@ -136,7 +148,6 @@ export default {
 
   watch: {
       ifEdit(newValue, oldValue) {
-          console.log(newValue)
           return newValue;
       }
   },
@@ -209,6 +220,7 @@ export default {
 
 .book-title-wrapper {
   margin-top: 6px;
+  width: 100%;
   text-align: center;
 }
 .title-small {

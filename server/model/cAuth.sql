@@ -71,3 +71,17 @@ CREATE TABLE `booklist` (
   `updateTime` datetime DEFAULT NULL,
   PRIMARY KEY (`bookId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for comment
+-- ----------------------------
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `commentId` int(11) NOT NULL AUTO_INCREMENT COMMENT '评论唯一的ID',
+  `avatarUrl` varchar(300) DEFAULT NULL COMMENT '用户头像url',
+  `star` int(11) DEFAULT NULL COMMENT '评价星星等级',
+  `content` text COMMENT '评价内容',
+  `nickName` varchar(50) DEFAULT NULL COMMENT '用戶名',
+  `submitTime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '用戶評論時間',
+  PRIMARY KEY (`commentId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -4,7 +4,7 @@ let DB = require('./DB.js');
 
 
   // 20_20597
-let url = 'http://www.biquyun.com/20_20565/';
+let url = 'https://www.biquyun.com/20_20689/';
 const db = new DB();
 let Sections = {};
 let SectionIds = [];
@@ -18,6 +18,7 @@ async.series([
       crawler.bookcrawler(url, function(err, sections, booklist) {
         Sections = sections;
         Booklist = booklist;
+        // console.log(Sections);
         done(err);
       })
     },
@@ -42,10 +43,8 @@ async.series([
       //SectionIds.split(","); 字符串转化为数组
       Booklist.sectionArray = SectionIds.join(",");
       Booklist.sectionTitles = SectionTitles.join("#");
-      console.log(Booklist);
       db.insertBook(Booklist).then((bookId) => {
         BookId = bookId;
-        console.log(BookId);
         done(null);
       });
     },

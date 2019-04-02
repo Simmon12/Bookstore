@@ -1,14 +1,32 @@
 <template>
   <div class="container">
-    <div class="userinfo">
-      <img class='userinfo-avatar' :src="logged ? userinfo.avatarUrl : '/static/images/user-unlogin.png'" background-size="cover">
-      <button class="userinfo-nickname" open-type="getUserInfo" lang="zh_CN" @getuserinfo="toLogin"  v-if="!logged">点我登录</button>
+    <img src='/static/images/my/my@bg.png' class='bg'></img>
+    <!-- <div class="avatar-wrapper"> -->
+      <button class="avatar-position button-clear" open-type="getUserInfo" lang="zh_CN" @getuserinfo="toLogin"  v-if="!logged" plain="true">
+        <img  class='avatar' src="/static/images/my/user-unlogin.png"/>
+      </button>
 
-      <span class="userinfo-nickname" v-else>
-        {{ userinfo.nickName }}
-      </span>
+      <div class="avatar-container avatar-position" v-else>
+        <img :src="userinfo.avatarUrl" class='avatar'></img>
+        <text>{{userinfo.nickName}}</text>
+      </div>
+    <!-- </div> -->
+
+    <div class='about-container'>
+      <div class='about-us' bindtap='onJumpToAbout'>
+        <image src='/static/images/my/about.png'></image>
+        <text class='description'>关于我们</text>
+      </div>
+      <div class='about-us'>
+        <text class='book-num'></text>
+        <text class='description'>最近阅读</text>
+      </div>
     </div>
-    <i-cell-group>
+
+
+
+
+ <!--    <i-cell-group>
       <i-cell title="阅读记录" is-link url="/pages/eBookReader/main?bookId=38&sectionId=1099">
         <i-icon slot="icon" type="createtask" size="28" color="#80848f" />
       </i-cell>
@@ -18,7 +36,7 @@
       <i-cell title="设置" is-link url="">
         <i-icon slot="icon" type="setup" size="28" color="#80848f" />
       </i-cell>
-    </i-cell-group>
+    </i-cell-group> -->
 
   </div>
 </template>
@@ -98,34 +116,117 @@
 </script>
 
 <style rel="stylesheet">
-  .userinfo {
-      margin-top: 40rpx;
-      height: 140rpx;
-      width: 100%;
-      background: #FFF;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      transition: all 300ms ease;
-  }
+.container{
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+}
 
-  .userinfo-avatar {
-      width: 100rpx;
-      height: 100rpx;
-      margin: 20rpx;
-      margin-left: 37rpx;
-      border-radius: 50%;
-  }
+.bg{
+  width:750rpx;
+  height:574rpx;
+}
 
-  .userinfo-nickname {
-      font-size: 38rpx;
-      margin-left: 40rpx;
-      color: #007AFF;
-      background-color: white;
-  }
+.avatar-position{
+  position:absolute; 
+  top:255rpx;
+}
 
-  .userinfo-nickname::after {
-    border: none;
-  }
+.button-clear {
+  padding: 0 !important;
+  border:none !important;
+}
+
+.my-img{
+  width:120rpx;
+  height:120rpx;
+}
+
+.avatar-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.avatar{
+  width:120rpx;
+  height:120rpx;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.about-container{
+  padding: 0 100rpx;
+  width:550rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position:absolute;
+  top:440rpx;
+}
+
+.about-us image{
+  width:34rpx;
+  height:34rpx;
+}
+.preview-container{
+  margin-top:30rpx;
+  display: flex;
+  flex-direction: row;
+  padding:0 30rpx;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.preview{
+  margin-bottom: 30rpx;
+}
+.about-us{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.book-num{
+  font-size:36rpx;
+  color:#000000;
+}
+
+.description{
+  font-size:24rpx;
+  color:#999999;
+}
+
+.about-container > view:nth-child(2){
+  margin-top: -5rpx;
+}
+
+.like-container{
+  width:100%;
+  margin-top: -13rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+.headline{
+  margin-top:30rpx;
+  width:97rpx;
+  height:42rpx;
+}
+
+.study{
+  width:88rpx;
+  height:88rpx;
+  position: absolute;
+  top:40rpx;
+  right:45rpx;
+}
+
+
 
 </style>
