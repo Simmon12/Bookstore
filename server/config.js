@@ -39,6 +39,7 @@ const CONF = {
     //     char: 'utf8mb4'
     // },
 
+   /* 本地数据库环境配置 */
     mysql: {
         host: 'localhost',
         port: 3306,
@@ -47,6 +48,7 @@ const CONF = {
         pass: 'clz05062746',
         char: 'utf8mb4'
     },
+    /* 本地数据库环境配置 */
 
     cos: {
         /**

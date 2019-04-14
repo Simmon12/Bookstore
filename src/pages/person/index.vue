@@ -3,7 +3,7 @@
     <img src='/static/images/my/my@bg.png' class='bg'></img>
     <!-- <div class="avatar-wrapper"> -->
       <button class="avatar-position button-clear" open-type="getUserInfo" lang="zh_CN" @getuserinfo="toLogin"  v-if="!logged" plain="true">
-        <img  class='avatar' src="/static/images/my/user-unlogin.png"/>
+        <img  class='avatar' src="/static/images/my/my.png"/>
       </button>
 
       <div class="avatar-container avatar-position" v-else>
@@ -22,6 +22,14 @@
         <text class='description'>最近阅读</text>
       </div>
     </div>
+
+    <div class='item-container like-container'>
+      <div class="like-item" v-for="(item, index) in likeItems" :key="index">
+         <img :src="item.bookImage" class="like-image">
+         <p class="bookName">{{item.bookName}}</p>
+      </div>
+    </div>
+
 
 
 
@@ -52,6 +60,26 @@
       return {
         logged: false,
         userinfo: {},
+        likeItems: [
+          {
+            'bookImage': 'http://img.biquyun.com/image/20/20565/20565s.jpg',
+            'bookName': '民国草根',
+            'author': '二宝天使' ,
+            'bookId': 38
+          },
+          {
+            'bookImage': 'http://img.biquyun.com/image/20/20661/20661s.jpg',
+            'bookName': '这个魔法世界有点坑',
+            'author': '墨羽云山',
+            'bookId': 39
+          },
+          {
+            'bookImage': 'http://img.biquyun.com/image/20/20687/20687s.jpg',
+            'bookName': '儒道诸天',
+            'author': '墨羽云山' ,
+            'bookId': 40
+          }
+        ],
       }
     },
     mounted() {
@@ -204,14 +232,7 @@
   margin-top: -5rpx;
 }
 
-.like-container{
-  width:100%;
-  margin-top: -13rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f5f5f5;
-}
+
 
 .headline{
   margin-top:30rpx;
@@ -227,6 +248,41 @@
   right:45rpx;
 }
 
+.like-container{
+  width:100%;
+  margin: 13rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.item-container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  box-sizing: border-box;
+  padding-right:19px;
+}
+
+.like-item {
+  flex: 0 0 33.33%;
+  width: 33.33%;
+  padding-left:19px;
+  box-sizing: border-box
+}
+
+.like-container .like-image {
+  width: 100%;
+  height: 140px;
+  box-shadow: 1px 1px 3px 1 px rgba(200, 200, 200, .3);
+  border:　1px solid #eee;
+}
+.like-container .bookName {
+  height: 20px;
+  line-height: 20px;
+  font-size: 13px;
+  color: #495060;
+  margin-bottom: 5px
+}
 
 </style>
