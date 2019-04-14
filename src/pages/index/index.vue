@@ -26,7 +26,7 @@
     <div class="free-block">
       <div class="recommend-wrapper">
         <div class="title-wrapper">
-          <span class="title">免费阅读</span>
+          <span class="title">精选阅读</span>
           <span class="change" @click="changeLike">换一批</span>
         </div>
         <div class="item-container">

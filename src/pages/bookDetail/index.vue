@@ -98,9 +98,8 @@ export default {
           item.submitTime = `${y}-${m}-${d}`;
           return item;
       })
-  
-      console.log(that.comments)
     })
+    
 	},
   methods: {
     bindcomment(e) {
@@ -118,9 +117,7 @@ export default {
     },
     async submitRating() {
       let that = this;
-
       let userinfo = wx.getStorageSync('userinfo')
-
       let params = {
         'bookId': that.book.bookId,
         'avatarUrl': userinfo.avatarUrl,

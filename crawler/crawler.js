@@ -10,6 +10,7 @@ var NUMBER = 0;
 exports.bookcrawler = function(URL, callback) {
   const startTime = new Date();
 
+ // 发送请求配置参数
   let options = {
     method: 'GET',
     encoding: null,
@@ -24,6 +25,8 @@ exports.bookcrawler = function(URL, callback) {
       console.log('小说爬取失败:' + err);
       return;
     }
+    // body是我们抓取到的返回结果
+    body = iconv.decode(body, 'gbk');
     console.log("首页爬取成功,费时" + (new Date() - startTime) / 1000 + '秒');
 
     // 开始处理爬到的信息
