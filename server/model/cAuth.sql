@@ -68,6 +68,7 @@ CREATE TABLE `booklist` (
   `bookType` varchar(100) DEFAULT NULL COMMENT '书籍分类',
   `author` varchar(50) DEFAULT NULL COMMENT '作者名',
   `sectionArray` text COMMENT '小说章节列表，以分隔符-相连',
+  'sectionTitles' text COMMENT '小说章节标题，以分隔符#相连',
   `updateTime` datetime DEFAULT NULL,
   PRIMARY KEY (`bookId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

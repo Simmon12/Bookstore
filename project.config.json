@@ -2,17 +2,20 @@
 	"description": "项目配置文件。",
 	"setting": {
 		"urlCheck": false,
-		"es6": false,
+		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"nodeModules": true
 	},
 	"miniprogramRoot": "dist/wx/",
 	"qcloudRoot": "server/",
 	"compileType": "miniprogram",
 	"appid": "wx78110ed5d8d33e82",
 	"projectname": "bookstore",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -44,7 +47,7 @@
 					"id": 1,
 					"name": "eBookReader",
 					"pathName": "pages/eBookReader/main",
-					"query": "bookId=32&sectionId=575",
+					"query": "bookId=50&sectionId=2318",
 					"scene": null
 				},
 				{
@@ -52,6 +55,34 @@
 					"name": "bookshelf",
 					"pathName": "pages/bookshelf/main",
 					"query": "bookId=38&sectionId=1099",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "bookdetail",
+					"pathName": "pages/bookDetail/main",
+					"query": "bookId=38",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "AllComment",
+					"pathName": "pages/AllComment/main",
+					"query": "bookId=38",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/index/main",
+					"query": "bookId=38",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search/main",
+					"query": "",
 					"scene": null
 				}
 			]
