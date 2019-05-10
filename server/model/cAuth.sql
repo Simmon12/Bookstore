@@ -1,26 +1,8 @@
-/*
- Navicat Premium Data Transfer
-
- Source Server         : Localhost
- Source Server Type    : MySQL
- Source Server Version : 50717
- Source Host           : localhost
- Source Database       : cAuth
-
- Target Server Type    : MySQL
- Target Server Version : 50717
- File Encoding         : utf-8
-
- Date: 08/10/2017 22:22:52 PM
-*/
-
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 
--- ----------------------------
---  Table structure for `cSessionInfo`
--- ----------------------------
+
 DROP TABLE IF EXISTS `cSessionInfo`;
 CREATE TABLE `cSessionInfo` (
   `open_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -35,16 +17,8 @@ CREATE TABLE `cSessionInfo` (
   KEY `skey` (`skey`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='会话管理用户信息';
 
--- ----------------------------
--- [Err] 1451 -Cannot delete or update a parent row: a foreign key constraint fails (...)
--- 这是因为MySQL中设置了foreign key关联，造成无法更新或删除数据。
--- 可以通过设置FOREIGN_KEY_CHECKS变量来避免这种情况。
----------------------
-SET FOREIGN_KEY_CHECKS = 0;
 
--- ----------------------------
--- Table structure for bookcontent
--- ----------------------------
+
 DROP TABLE IF EXISTS `bookcontent`;
 CREATE TABLE `bookcontent` (
   `sectionId` int(11) NOT NULL AUTO_INCREMENT COMMENT '章节ID',
@@ -56,9 +30,7 @@ CREATE TABLE `bookcontent` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
--- ----------------------------
--- Table structure for booklist
--- ----------------------------
+
 DROP TABLE IF EXISTS `booklist`;
 CREATE TABLE `booklist` (
   `bookId` int(11) NOT NULL AUTO_INCREMENT COMMENT '小说id',
@@ -68,14 +40,12 @@ CREATE TABLE `booklist` (
   `bookType` varchar(100) DEFAULT NULL COMMENT '书籍分类',
   `author` varchar(50) DEFAULT NULL COMMENT '作者名',
   `sectionArray` text COMMENT '小说章节列表，以分隔符-相连',
-  'sectionTitles' text COMMENT '小说章节标题，以分隔符#相连',
+  `sectionTitles` text COMMENT '小说章节标题，以分隔符#相连',
   `updateTime` datetime DEFAULT NULL,
   PRIMARY KEY (`bookId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for comment
--- ----------------------------
+
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
   `commentId` int(11) NOT NULL AUTO_INCREMENT COMMENT '评论唯一的ID',

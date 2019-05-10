@@ -25,8 +25,16 @@ exports.bookcrawler = function(URL, callback) {
       console.log('小说爬取失败:' + err);
       return;
     }
+    var chunks = [];
+    res.on('data', function(chunk) {
+      chunks.push(chunk);
+    })
+
+    res.on('end', function () {
+       body = iconv.decode(Buffer.concat(chunks), 'gbk');
+    })
     // body是我们抓取到的返回结果
-    body = iconv.decode(body, 'gbk');
+    // body = iconv.decode(body, 'gbk');
     console.log("首页爬取成功,费时" + (new Date() - startTime) / 1000 + '秒');
 
     // 开始处理爬到的信息
