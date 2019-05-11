@@ -71,7 +71,7 @@ export default {
       star: 0,
       show_submit_comment: false,
       rating_content: '',
-      commentsLength: 28,
+      commentsLength: 0,
       comments: [
         {
           'avatarUrl': 'https://wx.qlogo.cn/mmopen/vi_32/GsSvP5O8zAIssIXtbg71eUA8HHxDaHyM9Mg1HgzzFDP7tQlvobiaDf9DE2ictyRmBGq9Wia4icAKPK07NZKGibPejibw/132',
@@ -98,6 +98,7 @@ export default {
           item.submitTime = `${y}-${m}-${d}`;
           return item;
       })
+      that.commentsLength = that.comments.length;
     })
     
 	},
@@ -125,8 +126,29 @@ export default {
         'content': that.rating_content,
         'nickName':userinfo.nickName
       }
-      let res = await post(config.subComment(), params)
+      let res = await post(config.subComment(), params);
+      that.comments.splice(-1, 0, {
+        'avatarUrl': userinfo.avatarUrl,
+        'star': that.star,
+        'submitTime': submitTime,
+        'content': that.rating_content,
+        'nickName': userinfo.nickName
+      })
+      console.log('dads ');
+      console.log(that.comments);
+      console.log('发表评论');
+      console.log(res[0].submitTime);
+      console.log('dads ');
+      // let time = new Date(res[0].submitTime);
+      // let y = time.getFullYear();
+      // var m = time.getMonth()+1;
+      // var d = time.getDate();
+      // submitTime = `${y}-${m}-${d}`;
+      // console.log(submitTime);
+
+
       this.show_submit_comment = false;
+
     },
     moreComments() {
       console.log('更多评论')

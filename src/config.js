@@ -27,6 +27,9 @@ const config = {
   },
   subComment: function() {
     return `${host}/subComment`
+  },
+  getSectionsBybookId: function(bookId) {
+    return `${host}/getSectionsBybookId/${bookId}`
   }
 }
 

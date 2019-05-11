@@ -1,13 +1,13 @@
 <template>
   <div class="bookshelf-container" @longpress="jumptoEdit" >
     <div class="book-shelf-title" v-show="ifEdit">
-      <i-row>
-        <i-col span="8" i-class="col-item" @click="clearAll">全选</i-col>
-        <i-col span="8" i-class="col-item">请选择</i-col>
-        <i-col span="8" i-class="col-item" @click="finish">
+      <div>
+        <div class="col-class col-item" @click="clearAll">全选</div>
+        <div class="col-class col-item">请选择</div>
+        <div class="col-class col-item" @click="finish">
           <span style="color: red">完成</span>
-        </i-col>
-      </i-row>
+        </div>
+      </div>
     </div>
 <!--     <div class="book-shelf-baner">
       <img class="banner-image" src="/static/images/bookshelf_banner.jpg" background-size="cover">
@@ -89,5 +89,12 @@ export default {
 .book-shelf-scroll-wrapper {
   margin-top: 34px;
 }
-
+.col-class {
+  height: 52px;
+  display: inline-block;
+  width: 32%;
+  text-align: center;
+  margin: 0 auto;
+  text-align: center;
+}
 </style>

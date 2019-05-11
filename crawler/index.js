@@ -4,7 +4,7 @@ let DB = require('./DB.js');
 
 
   // 20_20597
-let url = 'https://www.biquyun.com/20_20689/';
+let url = 'https://www.biquyun.com/20_20752/';
 const db = new DB();
 let Sections = {};
 let SectionIds = [];

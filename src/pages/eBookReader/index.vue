@@ -18,21 +18,21 @@
       <div class="bookStyleSetting-container g_transition3s" v-show="showFontSet">
         <bookStyleSetting :initFontSize="initFontSize"  @changeFontSize="changeFontSize" @changeBgc="changeBgc" ></bookStyleSetting>
       </div>
-      <i-row i-class="tabBar">
-        <i-col span="8" i-class="col-class" @click="toggleMunu">
+      <div class="tabBar">
+        <div class="col-class" @click="toggleMunu">
           <i-icon type="other" size="23"></i-icon>
           <p>目录</p>
-        </i-col>
-        <i-col span="8" i-class="col-class" @click="addInBookshelf">
+        </div>
+        <div class="col-class" @click="addInBookshelf">
           <i-icon type="add" size="23"></i-icon>
           <p v-if="added">已加入书架</p>
           <p v-else>加入书架</p>
-        </i-col>
-        <i-col span="8" i-class="col-class" @click="toggleFont">
+        </div>
+        <div class="col-class" @click="toggleFont">
           <i-icon type="setup" size="23"></i-icon>
           <p>设置</p>
-        </i-col>
-      </i-row>
+        </div>
+      </div>
     </div>
 
     <i-drawer mode="left" :visible="showMenu" @close="toggleMunu">
@@ -224,15 +224,20 @@
         wx.setNavigationBarTitle({
           title: self.book.bookName
         })
-        let sectionTitles = this.book.sectionTitles.split("#");
-        let sectionIds = this.book.sectionArray.split(",");
-        self.sectionLists = sectionIds.map(function (item, index) {
-          return {'sectionId': item, 'sectionTitle': sectionTitles[index]};
-        })
+        self.sectionLists = await get(config.getSectionsBybookId(bookId));
+        console.log('sdfjsd');
+        console.log(self.sectionLists);
+        // let sectionTitles = this.book.sectionTitles.split("#");
+        // let sectionIds = this.book.sectionArray.split(",");
+        // self.sectionLists = sectionIds.map(function (item, index) {
+        //   return {'sectionId': item, 'sectionTitle': sectionTitles[index]};
+        // })
+        
         
       },
 
       toggleMunu() {
+        console.log('')
         this.showMenu = !this.showMenu;
         this.showTab = false;
         this.showFontSet = false
@@ -399,9 +404,14 @@ page {
 }
 .tabBar {
   height: 54px;
+  font-size: 15px;
 }
 .col-class {
   height: 52px;
+  display: inline-block;
+  width: 32%;
+  text-align: center;
+  margin: 0 auto;
   text-align: center;
 }
 .col-class p {

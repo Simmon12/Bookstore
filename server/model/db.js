@@ -47,10 +47,27 @@ function getCommentsByBookId(bookId) {
 }
 
 function insertComment(comment) {
-  return mysql('comment').insert(comment).returning('commentId')
-        .then((commentId) => {
-          return {commentId: commentId}
+  return mysql('comment').insert(comment).returning(['commentId','submitTime'])
+        .then((commentId, submitTime) => {
+           return mysql('comment').column('submitTime').where('commentId', commentId).select()
+              .then((submitTime) => {
+                 return submitTime;
+              })
         })
+}
+
+function getSectionsBybookId(bookId) {
+  return mysql('booklist').where('bookId', bookId)
+          .column('sectionTitles','sectionArray' )
+          .select()
+          .then((res) => {
+              let sectionTitles = res[0].sectionTitles.split("#");
+              let sectionIds = res[0].sectionArray.split(",");
+              let sectionLists = sectionIds.map(function (item, index) {
+                return {'sectionId': item, 'sectionTitle': sectionTitles[index]};
+              })
+              return sectionLists;
+          })
 }
 
 module.exports = {
@@ -58,5 +75,6 @@ module.exports = {
   getContentById,
   getBooksByBookName,
   getCommentsByBookId,
-  insertComment
+  insertComment,
+  getSectionsBybookId
 }

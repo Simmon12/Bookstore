@@ -75,22 +75,22 @@ export default {
       test: '',
       likeItems: [
         {
-          'bookImage': 'http://img.biquyun.com/image/20/20565/20565s.jpg',
-          'bookName': '民国草根',
-          'author': '二宝天使' ,
-          'bookId': 38
-        },
-        {
-          'bookImage': 'http://img.biquyun.com/image/20/20661/20661s.jpg',
-          'bookName': '这个魔法世界有点坑',
+          'bookImage': 'http://img.biquyun.com/image/20/20719/20719s.jpg',
+          'bookName': '我真的不是魔法师',
           'author': '墨羽云山',
-          'bookId': 39
+          'bookId': 10
         },
         {
-          'bookImage': 'http://img.biquyun.com/image/20/20687/20687s.jpg',
-          'bookName': '儒道诸天',
+          'bookImage': 'http://img.biquyun.com/image/20/20724/20724s.jpg',
+          'bookName': '明星修练系统',
+          'author': '二宝天使' ,
+          'bookId': 11
+        },
+        {
+          'bookImage': 'http://img.biquyun.com/image/20/20752/20752s.jpg',
+          'bookName': '不存在的玩家',
           'author': '墨羽云山' ,
-          'bookId': 40
+          'bookId': 12
         }
       ],
       freeItems: [
@@ -99,28 +99,28 @@ export default {
           'bookName': '民国草根',
           'author': '二宝天使' ,
           'bookType': '历史',
-          'bookId': 38
+          'bookId': 9
         },
         {
           'bookImage': 'http://img.biquyun.com/image/20/20661/20661s.jpg',
           'bookName': '这个魔法世界有点坑',
           'author': '墨羽云山', 
           'bookType': '玄幻',
-          'bookId': 39
+          'bookId': 9
         },
         {
           'bookImage': 'http://img.biquyun.com/image/20/20687/20687s.jpg',
           'bookName': '儒道诸天',
           'author': '墨羽云山',
           'bookType': '历史',
-          'bookId': 40
+          'bookId': 9
         },
         {
           'bookImage': 'http://img.biquyun.com/image/20/20576/20576s.jpg',
           'bookName': '儒道诸天',
           'author': '墨羽云山' ,
           'bookType': '青春言情',
-          'bookId': 38
+          'bookId': 9
         }
       ],
       classicItems: [

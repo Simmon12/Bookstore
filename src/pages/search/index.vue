@@ -5,7 +5,10 @@
 	      <div class='search-container'>
 	        <img class='icon' src='/static/images/search.png'></img>
 	        <input @confirm="onConfirm" placeholder='书籍名' class='bar' auto-focus='true' placeholder-class='in-bar' ></input>
-	        <img @click='onDelete' class='cancel-img' src='/static/images/cancel.png'></img>
+	        <span @click='onDelete'>
+	        	<img  class='cancel-img' src='/static/images/cancel.png'></img>
+	        </span>
+
 	      </div>
 	</div>
     <div v-if="!searching">
@@ -56,6 +59,11 @@ export default {
 		this.historyWords = wx.getStorageSync('historys') || [];
 	},
 	methods: {
+		onDelete() {
+			console.log('sss');
+			this.searching = false;
+			this.noneResult = false;
+		},
 		async onConfirm(event) {
 			let word = event.mp.detail.value;
 			let maxLength = 10;
@@ -101,10 +109,6 @@ export default {
 			}
 			this.searching = true;
 		},
-		onDelete() {
-			this.searching = false;
-			this.noneResult = false;
-		}
 	},
 	components: {
 		tag,
