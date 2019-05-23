@@ -127,25 +127,11 @@ export default {
         'nickName':userinfo.nickName
       }
       let res = await post(config.subComment(), params);
-      that.comments.splice(-1, 0, {
-        'avatarUrl': userinfo.avatarUrl,
-        'star': that.star,
-        'submitTime': submitTime,
-        'content': that.rating_content,
-        'nickName': userinfo.nickName
-      })
       console.log('dads ');
       console.log(that.comments);
       console.log('发表评论');
       console.log(res[0].submitTime);
       console.log('dads ');
-      // let time = new Date(res[0].submitTime);
-      // let y = time.getFullYear();
-      // var m = time.getMonth()+1;
-      // var d = time.getDate();
-      // submitTime = `${y}-${m}-${d}`;
-      // console.log(submitTime);
-
 
       this.show_submit_comment = false;
 
